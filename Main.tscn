@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Minecraft/Grass.PNG" type="Texture" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://Player.gd" type="Script" id=3]
+[ext_resource path="res://Map.gd" type="Script" id=4]
+[ext_resource path="res://Minecraft/Wood.PNG" type="Texture" id=5]
+[ext_resource path="res://Hint.gd" type="Script" id=6]
+[ext_resource path="res://hint.gdshader" type="Shader" id=7]
+[ext_resource path="res://Minecraft/Stone.PNG" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 30, 70 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 80, 80, 0, 80, 0, 0, 80, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 80, 80, 0, 80, 0, 0, 80, 0 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "Grass.PNG 0"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 80, 80 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 3 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "Stone.PNG 1"
+1/texture = ExtResource( 8 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 80, 80 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape = SubResource( 7 )
+1/shape_one_way = false
+1/shape_one_way_margin = 1.0
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 7 )
+shader_param/s = true
+
+[sub_resource type="TileSet" id=4]
+0/name = "Wood.PNG 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 80, 80 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Player" type="KinematicBody2D" parent="."]
+position = Vector2( 508, -285 )
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2( 0, -1 )
+current = true
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+margin_left = -19.0
+margin_top = -61.0
+margin_right = 18.0
+margin_bottom = 66.0
+
+[node name="RayCast2D" type="RayCast2D" parent="Player"]
+position = Vector2( 0, 2 )
+enabled = true
+cast_to = Vector2( 82, 8 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 2 )
+cell_size = Vector2( 80, 80 )
+format = 1
+script = ExtResource( 4 )
+
+[node name="Hint" type="TileMap" parent="."]
+material = SubResource( 6 )
+tile_set = SubResource( 4 )
+cell_size = Vector2( 80, 80 )
+format = 1
+script = ExtResource( 6 )
