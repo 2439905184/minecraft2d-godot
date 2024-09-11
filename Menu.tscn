@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://40font.tres" type="DynamicFont" id=1]
 [ext_resource path="res://demo1.png" type="Texture" id=2]
+[ext_resource path="res://script/Menu.gd" type="Script" id=3]
 
 [node name="Menu" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 515, 337 )
@@ -46,3 +48,5 @@ margin_right = 423.0
 margin_bottom = 126.0
 custom_fonts/font = ExtResource( 1 )
 text = "读取存档"
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
