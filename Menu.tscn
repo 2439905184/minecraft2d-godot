@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://40font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://demo1.png" type="Texture" id=2]
+
+[node name="Menu" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 515, 337 )
+scale = Vector2( 1, 0.87 )
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -1.0
+margin_top = 4.0
+margin_right = 1023.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "my pixel world"
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 669.0
+margin_top = 13.0
+margin_right = 812.0
+margin_bottom = 68.0
+custom_fonts/font = ExtResource( 1 )
+text = "beta1.0"
+align = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 266.0
+margin_top = 154.0
+margin_right = 689.0
+margin_bottom = 280.0
+
+[node name="play" type="Button" parent="VBoxContainer"]
+margin_right = 423.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 1 )
+text = "开始游戏"
+
+[node name="read" type="Button" parent="VBoxContainer"]
+margin_top = 65.0
+margin_right = 423.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "读取存档"
