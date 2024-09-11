@@ -27,18 +27,10 @@ func _destory_block(p_mouse_pos):
 	set_cellv(cell_pos,-1)
 	pass
 
-func get_whole_cell():
-#	for y in 7:
-#		for x in 13:
-#			get_cellv(Vector2(x,y),1)
-#	# grass
-#	for x in 13:
-#		get_cellv(Vector2(x,0),0)
-	pass
-
 func get_tilemap_data():
-	for x in world_width:
-		var id = get_cellv(Vector2(x,1))
-		tile_data.x.append(id)
+	var cells = get_used_cells()
+	for cell in cells:
+		var data = get_cellv(cell)
+		tile_data.x.append(data)
 	return tile_data
 #		get_cellv(Vector2(x,0))
