@@ -16,5 +16,6 @@ func _input(event):
 
 func _on_menu_save_pressed():
 	var data =$TileMap.get_tilemap_data()
-	print_debug(data)
-	pass # Replace with function body.
+	print(data)
+#	get_tree().change_scene("res://Menu.tscn")
+	pass
