@@ -30,7 +30,7 @@ func gen_world():
 		
 func _set_block(p_mouse_pos):
 	var cell_pos = world_to_map(p_mouse_pos)
-	set_cellv(cell_pos,0)
+	set_cellv(cell_pos,Globals.used_id)
 	pass
 	
 func _destory_block(p_mouse_pos):
