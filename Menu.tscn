@@ -49,4 +49,19 @@ margin_bottom = 126.0
 custom_fonts/font = ExtResource( 1 )
 text = "读取存档"
 
+[node name="PopupPanel" type="PopupPanel" parent="."]
+margin_left = 301.0
+margin_top = 102.0
+margin_right = 763.0
+margin_bottom = 374.0
+
+[node name="Label" type="Label" parent="PopupPanel"]
+margin_left = 110.0
+margin_top = 89.0
+margin_right = 150.0
+margin_bottom = 103.0
+custom_fonts/font = ExtResource( 1 )
+text = "不存在存档！"
+
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/read" to="." method="_on_read_pressed"]
